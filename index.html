@@ -7,36 +7,101 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <section class="sidebar">
-    <div class="deco"></div>
-    <a class="logo" href="#">
-      <img src="./assets/Logo.svg" alt="">
-    </a>
-    <div class="underline">
-      <div class="dot"></div>
-      <div class="line"></div>
-    </div>
-    <div class="deco-dot">
-      
-    </div>
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item">Revenues</li>
-        <li class="nav-item">total web sessions</li>
-        <li class="nav-item">Gross Profit MMAs</li>
-        <li class="nav-item">Web Sales</li>
-        <li class="nav-item">avg order sizes</li>
-        <li class="nav-item">new customer sales ord...</li>
-        <li class="nav-item">sales orders counts</li>
-        <li class="nav-item">total web sessions</li>
-        <li class="nav-item">visitor web sessions</li>
-        <li class="nav-item">web forms submissions</li>
-      </ul>
-    </nav>
-
-  </section>
-  <main>
-
+  <main class="wrapper">
+    <section class="sidebar">
+      <a class="logo" href="#">
+        <img src="./assets/Logo.svg" alt="">
+      </a>
+      <div class="underline">
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+      <div class="deco-dot">
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item active">
+            Revenues
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">total web sessions</li>
+          <li class="nav-item">Gross Profit MMAs</li>
+          <li class="nav-item">Web Sales</li>
+          <li class="nav-item">avg order sizes</li>
+          <li class="nav-item">new customer sales ord...</li>
+          <li class="nav-item">sales orders counts</li>
+          <li class="nav-item">total web sessions</li>
+          <li class="nav-item">visitor web sessions</li>
+          <li class="nav-item">web forms submissions</li>
+        </ul>
+      </nav>
+      <div class="toolbox">
+        <a href="#" class="tool"> 
+          <span>settings</span>
+          <img src="./assets/Vector.svg" alt="">
+        </a>
+        <a href="#" class="tool">
+          <span>log out</span>
+          <img src="./assets/arrow.svg" alt="">
+        </a>
+      </div>
+      <div class="background"></div>
+    </section>
+    <section class="main">
+      <div class="main-wrapper">
+        <div class="dropdown">
+          <div class="filter-button open">
+            <img src="./assets/plus.svg" alt="">
+            <span class="button-text">filters</span>
+            <div class="deco-curve"></div>
+          </div>
+          <div class="dropdown-open">
+            <div class="years">
+              <div class="year-button year-active">2018</div>
+              <div class="year-button">2019</div>
+              <div class="year-button">2020</div>
+            </div>
+            <div class="hr"></div>
+            <div class="quarters">
+              <input id="q1" class="quarter" type="checkbox" hidden>
+              <label for="q1">
+                <div class="fake-check"></div>
+                <span>Q1</span>
+              </label>
+              <input id="q2" class="quarter" type="checkbox" hidden>
+              <label for="q2">
+                <div class="fake-check"></div>
+                <span>Q2</span>
+              </label>
+              <input id="q3" class="quarter" type="checkbox" hidden>
+              <label for="q3">
+                <div class="fake-check"></div>
+                <span>Q3</span>
+              </label>
+              <input id="q4" class="quarter" type="checkbox" hidden>
+              <label for="q4">
+                <div class="fake-check"></div>
+                <span>Q4</span>
+              </label>
+            </div>
+            <div class="buttons">
+              <button class="dropdown-button">show</button>
+              <button class="dropdown-button">compare</button>
+              <button class="dropdown-button">month to date</button>
+              <button class="dropdown-button">year to date</button>
+            </div>
+          </div>
+        </div>
+        <div class="chart">
+        </div>
+      </div>
+    </section>
   </main>
 </body>
 </html>
