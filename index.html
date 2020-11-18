@@ -30,15 +30,96 @@
               <div class="circle-bottom"></div>
             </div>
           </li>
-          <li class="nav-item">total web sessions</li>
-          <li class="nav-item">Gross Profit MMAs</li>
-          <li class="nav-item">Web Sales</li>
-          <li class="nav-item">avg order sizes</li>
-          <li class="nav-item">new customer sales ord...</li>
-          <li class="nav-item">sales orders counts</li>
-          <li class="nav-item">total web sessions</li>
-          <li class="nav-item">visitor web sessions</li>
-          <li class="nav-item">web forms submissions</li>
+          <li class="nav-item">
+            total web sessions
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            Gross Profit MMAs
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            Web Sales
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            avg order sizes
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            new customer sales ord...
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            sales orders counts
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            total web sessions
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            visitor web sessions
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            web forms submissions
+            <div class="deco-dot">
+              <div class="circle-top"></div>
+              <div class="circle-dot">
+                <div class="color-dot"></div>
+              </div>
+              <div class="circle-bottom"></div>
+            </div>
+          </li>
         </ul>
       </nav>
       <div class="toolbox">
@@ -57,15 +138,21 @@
       <div class="main-wrapper">
         <div class="dropdown">
           <div class="filter-button open">
-            <img src="./assets/plus.svg" alt="">
+            <span class="sign">
+              <img class="minus" src="./assets/minus.svg" alt="">
+              <img class="plus" src="./assets/plus.svg" alt="">
+            </span>
             <span class="button-text">filters</span>
             <div class="deco-curve"></div>
           </div>
           <div class="dropdown-open">
             <div class="years">
-              <div class="year-button year-active">2018</div>
-              <div class="year-button">2019</div>
-              <div class="year-button">2020</div>
+              <input class="year-radio" type="radio" name="years" id="2018" hidden>
+              <label for="2018" class="year-button">2018</label>
+              <input class="year-radio" type="radio" name="years" id="2019" hidden>
+              <label for="2019" class="year-button">2019</label>
+              <input class="year-radio" type="radio" name="years" id="2020" hidden>
+              <label for="2020" class="year-button">2020</label>
             </div>
             <div class="hr"></div>
             <div class="quarters">
@@ -99,9 +186,91 @@
           </div>
         </div>
         <div class="chart">
+          <canvas id="myChart"></canvas>
         </div>
       </div>
     </section>
   </main>
+  <script>
+    const filterButton = document.querySelector('.filter-button');
+    const filterMenu = document.querySelector('.dropdown-open');
+    filterButton.addEventListener('click', () => {
+      filterMenu.classList.toggle('hidden');
+      filterButton.classList.toggle('open');
+    });
+    const list = document.querySelectorAll('.nav-item');
+    document.querySelector('.nav-list').addEventListener('click', (event) => {
+      list.forEach(item => item.classList.remove('active'));
+      event.target.classList.toggle('active');
+    });
+    const height = document.documentElement.clientHeight;
+    document.querySelector('.main').setAttribute('height', height);
+    document.querySelector('.sidebar').setAttribute('height', height);
+  </script>
+  <script src="node_modules/chart.js/dist/Chart.js"></script>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+            datasets: [{
+                label: 'Revenue',
+                borderColor: '#2F80ED',
+                data: [12, 19, 3, 5, 2, 3, 7, 6, 10, 4, 13],
+                borderWidth: 1
+            }, {
+              label: '12MMA',
+              borderColor: '#63ECDB',
+              data: [7, 9, 13, 2, 6, 5, 3, 6, 11, 10, 7],
+              borderWidth: 1
+            }]
+        },
+        options: {
+          responsive: true,
+          layout: {
+            padding: 40,
+          },
+          legend: {
+            position: 'bottom',
+            align: 'start',
+            labels: {
+              boxWidth: 12,
+            }
+
+          },
+          elements: {
+            point: {
+              radius: 0,
+            },
+            line: {
+              borderWidth: 1,
+              borderColor: '#2F80ED',
+              tension: 0,
+              fill: false,
+            }
+          },
+          scales: {
+            gridLines: {
+              display: false,
+            },
+            xAxes: [{
+              gridLines: {
+                color: 'transparent',
+                drawTicks: true,
+              },
+            }],
+            yAxes: [{
+              gridLines: {
+                color: 'transparent',
+              },
+              ticks: {
+                  beginAtZero: true,
+              }
+            }]
+          },
+        }
+    });
+  </script>
 </body>
 </html>

@@ -23,7 +23,7 @@ ul, li {
   flex-shrink: 0;
   position: relative;
   width: 320px;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #2F80ED;
   padding-left: 40px;
   padding-top: 20px;
@@ -93,21 +93,30 @@ ul, li {
   text-transform: uppercase;
   font-size: 14px;
   opacity: 0.6;
+  white-space: nowrap;
+  transition: opacity 0.5s, font-size 0.5s;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  opacity: 1;
 }
 
 .active {
   font-size: 16px;
   font-weight: 700;
   opacity: 1;
+  white-space: nowrap;
 }
 
 .deco-dot {
   position: absolute;
   top: 7px;
-  right: -40px;
+  right: -60px;
   height: 36px;
   width: 9px;
   background-color: white;
+  transition: transform 0.5s;
 }
 
 .circle-top {
@@ -138,6 +147,16 @@ ul, li {
   height: 8px;
   width: 8px;
   border-radius: 4px;
+  opacity: 0;
+}
+
+.active .deco-dot {
+  transform: translateX(-20px)
+}
+
+.active .color-dot,
+.nav-item:hover .color-dot {
+  opacity: 1;
 }
 
 .circle-bottom {
@@ -163,10 +182,16 @@ ul, li {
   text-transform: uppercase;
   color: white;
   font-size: 14px;
+  opacity: 0.6;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+
+.tool:hover {
+  opacity: 1;
 }
 
 .tool span {
-  opacity: 0.6;
   line-height: 320%;
   padding: 0 10px;
 }
@@ -175,7 +200,9 @@ ul, li {
   background-color: white;
   min-height: 100vh;
   width: 100%;
-  margin: 100px;
+  min-width: 600px;
+  padding: 50px 100px;
+  box-sizing: border-box;
 }
 
 .background {
@@ -202,7 +229,28 @@ ul, li {
   text-transform: uppercase;
   border-radius: 18px;
   color: #2F80ED;
+  transition: all 0.5s;
+  z-index: 2;
+  cursor: pointer;
 }
+
+
+.sign {
+  position: relative;
+}
+
+.minus {
+  position: relative;
+  bottom: 5px;
+}
+
+.plus {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  transition: opacity 0.5s;
+}
+
 
 .filter-button:before {
   position: absolute;
@@ -214,6 +262,9 @@ ul, li {
   width: 20px;
   height: 36px;
   border-left: 1px solid #E5E5E5;
+  opacity: 0;
+  transition: opacity 0.5s;
+
 }
 
 .filter-button:after {
@@ -224,11 +275,9 @@ ul, li {
   width: 100%;
   height: 1px;
   bottom: -1px;
-  right: -18px
-}
-
-.open {
-  border-color: #E5E5E5;
+  right: -18px;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
 .deco-curve {
@@ -239,6 +288,8 @@ ul, li {
   width: 36px;
   background-color: white;
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
 .deco-curve::after {
@@ -252,13 +303,39 @@ ul, li {
   border-radius: 18px;
   top: -18px;
   left: 18px;
+  opacity: 0;
+}
+
+.open {
+  border-color: #E5E5E5;
+}
+
+.open .plus {
+  opacity: 0;
+}
+
+.open:before,
+.open::after,
+.open .deco-curve,
+.open .deco-curve::after {
+  opacity: 1;
 }
 
 .dropdown-open {
   border: 1px solid #E5E5E5;
   border-radius: 18px;
-  padding: 50px 100px;
+  padding: 50px;
   min-width: 600px;
+  max-height: 300px;
+  box-shadow: 0 10px 16px 0 rgba(79, 79, 79, 0.1);
+  transition: all 0.5s;
+  transform-origin: top left;
+}
+
+.hidden {
+  transform: scale(0);
+  max-height: 0;
+  padding: 0;
 }
 
 .years {
@@ -271,10 +348,10 @@ ul, li {
   width: 138px;
   height: 36px;
   text-align: center;
+  cursor: pointer;
 }
 
-.year-active::after,
-.year-button:hover::after {
+.year-button:after {
   content:"";
   display: block;
   position: absolute;
@@ -283,10 +360,17 @@ ul, li {
   width: 100%;
   height: 5px;
   background-color: #2F80ED;
+  opacity: 0;
+  transition: all 0.2s;
 }
 
+.year-radio:checked + .year-button:after,
 .year-button:hover::after {
   opacity: 0.6;
+}
+
+.year-radio:checked + .year-button:after {
+  opacity: 1;
 }
 
 .hr {
@@ -298,12 +382,14 @@ ul, li {
 .quarters {
   display: flex;
   justify-content: space-between;
-  padding: 50px 15px;
+  padding: 30px 15px;
 }
 
 .quarters label {
   display: flex;
   align-items: center;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .fake-check {
@@ -312,6 +398,7 @@ ul, li {
   height: 16px;
   border: 1px solid #E5E5E5;
   border-radius: 4px;
+  margin-right: 10px;
 }
 
 .fake-check::after {
@@ -324,6 +411,12 @@ ul, li {
   height: 10px;
   background-color: #2F80ED;
   border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.quarter:checked + label .fake-check:after {
+  opacity: 1;
 }
 
 .buttons {
@@ -342,6 +435,9 @@ ul, li {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
+  outline: none;
+  transition: all 0.2s;
+  cursor: pointer;
 }
 
 .dropdown-button:hover {
@@ -349,9 +445,15 @@ ul, li {
   background-color: #2F80ED;
 }
 
+.dropdown-button:active {
+  background-color: #63ECDB;
+  border-color: #63ECDB;
+}
+
 .chart {
   border: 1px solid #E5E5E5;
-  height: 450px;
+  min-width: 700px;
   border-radius: 18px;
   margin-top: 40px;
+  box-shadow: 0 10px 16px 0 rgba(79, 79, 79, 0.1);
 }
