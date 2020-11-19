@@ -1,0 +1,176 @@
+.sidebar {
+  flex-shrink: 0;
+  position: relative;
+  width: 320px;
+  min-height: 100%;
+  background-color: #2F80ED;
+  padding-left: 40px;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.underline {
+  display: flex;
+  margin-top: 10px;
+}
+
+.dot {
+  position: relative;
+  width: 2px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: white;
+}
+
+.dot::before {
+  display: block;
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+  left: 4px;
+}
+
+.dot::after {
+  display: block;
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+  left: 8px;
+}
+
+.line {
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  border-radius: 1px;
+  margin-left: 12px;
+  margin-right: -2px;
+}
+
+.nav {
+  margin-top: 30px;
+  padding-bottom: 110px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 320%;
+  margin-right: 60px;
+}
+
+.nav-item {
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  opacity: 0.6;
+  white-space: nowrap;
+  transition: opacity 0.5s, font-size 0.5s;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  opacity: 1;
+}
+
+.active {
+  font-size: 16px;
+  font-weight: 700;
+  opacity: 1;
+  white-space: nowrap;
+}
+
+.deco-dot {
+  position: absolute;
+  top: 7px;
+  right: -60px;
+  height: 36px;
+  width: 9px;
+  background-color: white;
+  transition: transform 0.5s;
+}
+
+.circle-top {
+  position: absolute;
+  background-color: #2F80ED;
+  top: -9px;
+  left: -9px;
+  height: 18px;
+  width: 18px;
+  border-radius: 9px;
+}
+
+.circle-dot {
+  position: absolute;
+  background-color: white;
+  top: 9px;
+  left: -9px;
+  height: 18px;
+  width: 18px;
+  border-radius: 9px;
+}
+
+.color-dot {
+  position: absolute;
+  background-color: #63ECDB;
+  top: 5px;
+  left: 5px;
+  height: 8px;
+  width: 8px;
+  border-radius: 4px;
+  opacity: 0;
+}
+
+.active .deco-dot {
+  transform: translateX(-20px)
+}
+
+.active .color-dot,
+.nav-item:hover .color-dot {
+  opacity: 1;
+}
+
+.circle-bottom {
+  position: absolute;
+  background-color: #2F80ED;
+  bottom: -9px;
+  left: -9px;
+  height: 18px;
+  width: 18px;
+  border-radius: 9px;
+}
+
+.toolbox {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+
+.tool {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-transform: uppercase;
+  color: white;
+  font-size: 14px;
+  opacity: 0.6;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+
+.tool:hover {
+  opacity: 1;
+}
+
+.tool span {
+  line-height: 320%;
+  padding: 0 10px;
+}
